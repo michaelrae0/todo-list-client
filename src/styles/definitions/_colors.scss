@@ -10,13 +10,15 @@ $white: #fff;
 $white-dark: #f8f8f8;
 $white-darker: #eeeeee;
 $slate: #d8d8d8;
+$green: #409943;
+$green-dark: #327732;
 $red: #fc7459;
 $red-light: lighten($red, 0.35);
 $purple: #7A2BD2;
 $purple-dark: #40356E;
 $blue-light: #8DBBFF;
 
-$primary: $purple;
+$primary: $blue-light;
 $secondary: $blue-light;
 $base-font-color: $black;
 
