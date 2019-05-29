@@ -6,6 +6,7 @@
 }
 
 .row {
+  position: relative;
   height: 70px;
   display: flex;
   justify-content: space-between;
@@ -16,4 +17,9 @@
   width: auto;
   height: 55px;
   vertical-align: middle;
+}
+
+.search {
+  position: absolute;
+  left: calc(300px + 1.33rem);
 }

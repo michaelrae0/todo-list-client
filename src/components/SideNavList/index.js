@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
 import * as list from './sidenavlist.module.scss'
-import { H2, H3, H4 } from '../../components/Typography'
+import { H2, H3, H4 } from '../Typography'
 
 
 class SubNavList extends React.Component {

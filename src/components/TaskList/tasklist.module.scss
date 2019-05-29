@@ -1,0 +1,14 @@
+@import '../../styles/definitions/colors';
+
+.component {
+  width: calc(100% - 300px);
+}
+.row {
+  padding: 1.33rem 1.5rem;
+  justify-content: space-between;
+}
+
+.toggle {
+  color: $gray-light;
+  padding-top: 1.15rem
+}

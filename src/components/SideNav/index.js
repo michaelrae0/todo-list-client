@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
 import * as sidenav from './sidenav.module.scss'
-import { H2, H3, H4 } from '../../components/Typography'
+import { H2, H3, H4 } from '../Typography'
 import SideNavList from '../SideNavList'
 
 class SideNav extends React.Component {
