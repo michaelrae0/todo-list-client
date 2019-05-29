@@ -1,0 +1,23 @@
+@import '../../styles/definitions/colors';
+
+.component {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 40px;
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.icon {
+  margin-left: 0.25rem;
+  height: 25px;
+  width: 25px;
+}
+
+.input {
+  border: none;
+  font-size: 1.33rem;
+  outline: none;
+  margin-left: 1rem;
+  width: 100%;
+}

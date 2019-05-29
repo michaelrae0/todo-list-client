@@ -23,6 +23,10 @@ body {
   }
 }
 
+input {
+  @include font_loader($primary-family, 4, 'n');
+}
+
 #root {
   height: 100%;
 }
