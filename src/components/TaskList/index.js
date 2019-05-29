@@ -7,12 +7,14 @@ import Task from '../Task'
 
 class TaskList extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    const { tasks } = this.props
 
     this.state = {
       selected: null,
-      tasks: this.props.tasks,
-      deletedIndex: null,
+      tasks: tasks,
+      deletedIndex: tasks.length,
+      fadedIndex: tasks.length
     }
   }
 
@@ -54,14 +56,31 @@ class TaskList extends React.Component {
       tasks,
       deletedIndex: i
     })
+    setTimeout(() => this.setState({ deletedIndex: tasks.length }), 200)
+  }
+
+  handleBorderFade = (i) => {
+    // If last task on list is completed, fade the border above it
+    const { tasks } = this.props
+    console.log(i)
+
+    if (i === tasks.length - 1) {
+      this.setState({
+        fadedIndex: i - 1, // Above deleted task
+      })
+    }
   }
 
   render () {
-    const { tasks, deletedIndex } = this.state
+    const { tasks, deletedIndex, fadedIndex } = this.state
 
     const formattedTasks = tasks.map((task, i) => {
       return (
-        <Task task={task} index={i} key={task.name} handleClick={this.handleClick} slideUp={i >= deletedIndex} bordered={i !== tasks.length - 1}/>
+        <Task 
+        task={task} index={i} key={task.name} 
+        slideUp={i >= deletedIndex} bordered={i !== tasks.length - 1} fadeBorder={i === fadedIndex}
+        handleClick={this.handleClick}
+        handleBorderFade={this.handleBorderFade} />
       )
     })
 

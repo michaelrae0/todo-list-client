@@ -11,7 +11,7 @@ $toggle-diam: 22px;
   }
 
   &__slideUp {
-    animation: slide_in_bot 0.25s ease-in-out both;
+    animation: slide_in_bot 0.2s ease-in-out both;
   }
 }
 
@@ -81,4 +81,8 @@ $toggle-diam: 22px;
   height: 1px;
   left: 10%;
   background-color: $gray-lighter;
+
+  &__fadeOut {
+    animation: fade_out_bck 0.5s;
+  }
 }

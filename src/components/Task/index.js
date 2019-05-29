@@ -17,14 +17,15 @@ class Task extends React.Component {
   }
 
   handleCheck = () => {
-    const { index, handleClick } = this.props
+    const { index, handleClick, handleBorderFade } = this.props
 
-    this.setState({ slideOut: true })
-    setTimeout(() => handleClick(index), 550)
+    this.setState({ slideOut: true })         // slide task off list
+    handleBorderFade(index)                   // fade top border if task is at bottom of list
+    setTimeout(() => handleClick(index), 400) // delete from list
   }
 
   render () {
-    const { bordered, slideUp } = this.props
+    const { bordered, slideUp, fadeBorder } = this.props
     const { value, slideOut } = this.state
 
     // wrapper handles opacity transform separately from row's translateX
@@ -41,7 +42,7 @@ class Task extends React.Component {
             onChange={e => this.setState({ value: e.target.value })}
           />
         </Row>
-        {bordered && <div className={task.border}/>}
+        {bordered && <div className={classnames(task.border, {[task.border__fadeOut]: fadeBorder})}/>}
       </div>
     )
   }
