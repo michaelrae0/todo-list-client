@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import * as list from './tasklist.module.scss'
 import Row from '../Row'
-import { H1, H2, H3, H4, H5, H6 } from '../Typography'
+import { H1, H4 } from '../Typography'
 import Task from '../Task'
 
 class TaskList extends React.Component {
@@ -50,7 +49,7 @@ class TaskList extends React.Component {
 
     const formattedTasks = tasks.map(task => {
       return (
-        <Task task={task} key='name'/>
+        <Task task={task} key={task.name}/>
       )
     })
 

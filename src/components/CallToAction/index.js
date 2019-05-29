@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import * as cta from './calltoaction.module.scss'
-import Container from '../../components/Container'
-import Row from '../../components/Row'
 import { H2, H3 } from '../../components/Typography'
 
 class CallToAction extends React.Component {
@@ -11,7 +9,7 @@ class CallToAction extends React.Component {
     return (
       <div className={cta.component} >
         <div className={cta.image__container}>
-          <img src="https://img.icons8.com/dotty/80/000000/copybook.png" />
+          <img src="https://img.icons8.com/dotty/80/000000/copybook.png" alt='' />
         </div>
         <H2 className={cta.text__title} bold
           text={'Create a Personal Todo List'} />

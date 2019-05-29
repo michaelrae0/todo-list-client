@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './styles/app.scss'
-import * as index from './index.module.scss'
 import Header from './components/Header'
 import Landing from './pages/LandingPage'
 import Notepad from './pages/Notepad'

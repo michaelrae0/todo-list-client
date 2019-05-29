@@ -1,9 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import classnames from 'classnames'
 
 import * as sidenav from './sidenav.module.scss'
-import { H2, H3, H4 } from '../Typography'
 import SideNavList from '../SideNavList'
 
 class SideNav extends React.Component {
@@ -30,7 +27,6 @@ class SideNav extends React.Component {
 
   render () {
     const { dates, projects } = this.props
-    const { selected } = this.state
 
     return (
       <div className={sidenav.sidenav}>

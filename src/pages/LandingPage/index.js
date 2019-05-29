@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import * as landing from './landing.module.scss'
 import Container from '../../components/Container'
