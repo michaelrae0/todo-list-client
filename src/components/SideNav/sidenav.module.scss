@@ -1,0 +1,8 @@
+@import '../../styles/definitions/colors';
+
+.sidenav {
+  width: 300px;
+  min-height: 100%;
+  // border-left: 1px solid  $gray-lighter;
+  border-right: 1px solid  $gray-lighter;
+}

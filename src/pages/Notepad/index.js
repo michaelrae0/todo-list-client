@@ -1,17 +1,24 @@
 import React from 'react'
 
 import * as notepad from './notepad.module.scss'
-import Header from '../../components/Header'
-import Task from '../../components/Task'
+import Container from '../../components/Container'
+import Row from '../../components/Row'
+import SideNav from '../../components/SideNav'
+import List from '../../components/List'
 
-class Page extends React.Component {
+class Notepad extends React.Component {
   render () {
     return (
-      <div className={notepad.component}>
-        <Header />
-      </div>
+      <section className={notepad.section}>
+        <Container className={notepad.container}>
+          <Row className={notepad.row}>
+            <SideNav />
+            {/* <List /> */}
+          </Row>
+        </Container>
+      </section>
     )
   }
 }
 
-export default Page
+export default Notepad

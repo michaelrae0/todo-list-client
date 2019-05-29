@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './styles/app.scss'
 import * as index from './index.module.scss'
+import Header from './components/Header'
 import Landing from './pages/LandingPage'
 import Notepad from './pages/Notepad'
 
@@ -11,7 +12,10 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Route path='/' exact component={Landing} />
+        <Switch>
+          <Route path='/' exact component={Landing} />
+          <Header />
+        </Switch>
         <Route path='/notes' component={Notepad} />
       </Router>
     );
