@@ -27,7 +27,7 @@ h3, .h3, h4, .h4, path {
 }
 
 h1, .h1 { // LandingPage Title
-  @include font_loader($primary-family-bold, 5, 'n');
+  @include font_loader($primary-family, 5, 'n');
   font-size: 2.44rem;
   line-height: 2.44rem;
   letter-spacing: 1px;
@@ -37,27 +37,27 @@ h1, .h1 { // LandingPage Title
 }
 
 h2, .h2 { // Details Title
-  @include font_loader($primary-family-bold, 5, 'n');
-  font-size: 1.95rem;
-  line-height: 1.95rem;
+  @include font_loader($primary-family, 5, 'n');
+  font-size: 1.77rem;
+  line-height: 1.77rem;
   letter-spacing: 1px;
   @media (#{$min_tablets}) {
-    font-size: 1.95rem;
+    font-size: 1.77rem;
   }
 }
 
 h3, .h3 { // Thumbnail Title, Page Buttons, Next Button, LandingPage Button
-  @include font_loader($primary-family-bold, 5, 'n');
-  font-size: 1.56rem;
+  @include font_loader($primary-family, 5, 'n');
+  font-size: 1.33rem;
   line-height: 1.56rem;
   @media (#{$min_tablets}) {
-    font-size: 1.56rem;
+    font-size: 1.33rem;
   }
 }
 
 h4, .h4 { // Details Subtitles, Search Bar Selections
   @include font_loader($primary-family, 5, 'n');
-  font-size: 1.25rem;
+  font-size: 1.33rem;
   line-height: 1.25rem;
   @media (#{$min_tablets}) {
     font-size: 1.25rem;
@@ -74,7 +74,7 @@ h5, .h5 { // Thumbnail Subtitle,
 }
 
 h6, .h6 { // Search Bar Categories
-  @include font_loader($primary-family-bold, 5, 'n');
+  @include font_loader($primary-family, 5, 'n');
   font-size: 1rem;
   line-height: 1.125rem;
   letter-spacing: 0.35px;
