@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as list from './tasklist.module.scss'
 import Row from '../Row'
-import { H1, H4 } from '../Typography'
+import { H1, H2, H4 } from '../Typography'
 import Task from '../Task'
 
 class TaskList extends React.Component {
@@ -11,6 +11,8 @@ class TaskList extends React.Component {
 
     this.state = {
       selected: null,
+      tasks: this.props.tasks,
+      deletedIndex: null,
     }
   }
 
@@ -44,19 +46,29 @@ class TaskList extends React.Component {
     ]
   }
 
-  render () {
-    const { tasks } = this.props
+  handleClick = (i) => {
+    let { tasks } = this.props
 
-    const formattedTasks = tasks.map(task => {
+    tasks.splice(i, 1)
+    this.setState({
+      tasks,
+      deletedIndex: i
+    })
+  }
+
+  render () {
+    const { tasks, deletedIndex } = this.state
+
+    const formattedTasks = tasks.map((task, i) => {
       return (
-        <Task task={task} key={task.name}/>
+        <Task task={task} index={i} key={task.name} handleClick={this.handleClick} slideUp={i >= deletedIndex} bordered={i !== tasks.length - 1}/>
       )
     })
 
     return (
       <div className={list.component}>
         <Row className={list.row} noMargin >
-          <H1 className={list.title} text='Today'/>
+          <H2 className={list.title} text='Today'/>
           <H4 className={list.toggle} text='Show Completed' />
         </Row>
         {formattedTasks}

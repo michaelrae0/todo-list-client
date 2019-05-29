@@ -1,17 +1,37 @@
 @import '../../styles/definitions/colors';
+@import '../../styles/definitions/keyframes';
 
-$toggle-diam: 26px;
+$toggle-diam: 22px;
+
+.wrapper {
+  transition: all 1s;
+
+  &__slideOut {
+    animation: fade_out_bck 0.5s ease-in-out forwards;
+  }
+
+  &__slideUp {
+    animation: slide_in_bot 0.25s ease-in-out both;
+  }
+}
 
 .row {
   display: flex;
   align-items: center;
-  height: 65px;
+  height: 50px;
   width: 100%;
   padding-left: 1.77rem;
 
   &:hover {
-    color: $pink;
     cursor: pointer;
+
+    .input {
+      color: $pink;
+    }
+  }
+
+  &__slideOut {
+    animation: slide_out_right 1s ease-in-out both;
   }
 }
 
@@ -23,7 +43,7 @@ $toggle-diam: 26px;
   width: $toggle-diam;
   height: $toggle-diam;
   border-radius: $toggle-diam / 2;
-  border: 2px solid $gray-lighter;
+  border: 1px solid $gray-lighter;
   transition: all 0.2s linear;
 
   &__checkmark {
@@ -47,6 +67,18 @@ $toggle-diam: 26px;
   }
 }
 
-.title {
-  margin-left: 1.77rem;
+.input {
+  margin-left: 1.56rem;
+  border-bottom: 1px solid $gray-lighter;
+  border: none;
+  font-size: 1.33rem;
+  width: 600px;
+}
+
+.border {
+  position: relative;
+  width: 80%;
+  height: 1px;
+  left: 10%;
+  background-color: $gray-lighter;
 }
