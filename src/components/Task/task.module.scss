@@ -1,17 +1,52 @@
 @import '../../styles/definitions/colors';
 
-.component {
+$toggle-diam: 26px;
+
+.row {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 65px;
   width: 100%;
-  border-top: 1px solid $gray;
+  padding-left: 1.77rem;
 
-  :last-child {
-    border:none;
+  &:hover {
+    color: $pink;
+    cursor: pointer;
+  }
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: $toggle-diam;
+  height: $toggle-diam;
+  border-radius: $toggle-diam / 2;
+  border: 2px solid $gray-lighter;
+  transition: all 0.2s linear;
+
+  &__checkmark {
+    width: calc(#{$toggle-diam} - 14px);
+    height: auto;
+    g {
+      stroke: $gray-lighter;
+      stroke-width: 26;
+      transition: all 0.2s linear;
+    }
+  }
+
+  &:hover {
+    border-color: $green;
+    transition: all 0.4s linear;
+
+    g {
+      stroke: $green;
+      transition: all 0.4s linear;
+    }
   }
 }
 
 .title {
-  margin-left: 2rem;
+  margin-left: 1.77rem;
 }

@@ -16,7 +16,7 @@ class Header extends React.Component {
             <Link to='/'>
               <img className={header.icon} src="https://img.icons8.com/dotty/80/000000/copybook.png" />
             </Link>
-            <Search />
+            <Search className={header.search}/>
           </Row>
         </Container>
       </header>

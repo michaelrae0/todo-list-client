@@ -4,7 +4,7 @@ import * as notepad from './notepad.module.scss'
 import Container from '../../components/Container'
 import Row from '../../components/Row'
 import SideNav from '../../components/SideNav'
-import List from '../../components/List'
+import TaskList from '../../components/TaskList'
 
 class Notepad extends React.Component {
   render () {
@@ -13,7 +13,7 @@ class Notepad extends React.Component {
         <Container className={notepad.container}>
           <Row className={notepad.row}>
             <SideNav />
-            {/* <List /> */}
+            <TaskList />
           </Row>
         </Container>
       </section>
