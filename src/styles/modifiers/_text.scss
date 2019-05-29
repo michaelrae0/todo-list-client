@@ -57,10 +57,10 @@ h3, .h3 { // Thumbnail Title, Page Buttons, Next Button, LandingPage Button
 
 h4, .h4 { // Details Subtitles, Search Bar Selections
   @include font_loader($primary-family, 5, 'n');
-  font-size: 1.33rem;
+  font-size: 1rem;
   line-height: 1.25rem;
   @media (#{$min_tablets}) {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }
 
