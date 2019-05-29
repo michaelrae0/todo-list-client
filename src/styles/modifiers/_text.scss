@@ -39,7 +39,7 @@ h1, .h1 { // LandingPage Title
 h2, .h2 { // Details Title
   @include font_loader($primary-family, 5, 'n');
   font-size: 1.77rem;
-  line-height: 1.77rem;
+  line-height: 2rem;
   letter-spacing: 1px;
   @media (#{$min_tablets}) {
     font-size: 1.77rem;

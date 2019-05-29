@@ -1,0 +1,74 @@
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/keyframes';
+
+$image-dims: 140px;
+
+.component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  padding: $image-dims / 2 32px 0;
+  min-height: 350px;
+  max-width: 650px;
+  width: 100%;
+
+  background-color: $white;
+  border: 1px solid $gray-lighter;
+  border-radius: 5px;
+
+  text-align: center;
+  animation: fade_in_bottom 0.5s ease-in-out both;
+
+  @media (max-width: 650px) {
+    border-radius: 0;
+  }
+}
+
+.image {
+  &__container {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+
+    position: absolute;
+    top: -$image-dims / 2;
+    left: calc(50% - #{$image-dims} / 2);
+    background-color: white;
+    width: $image-dims;
+    height: $image-dims;
+    border-radius: $image-dims / 2;
+    border: 1px solid $gray-lighter;
+  }
+}
+
+.text {
+  &__title {
+    margin-top: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: rgb(236, 125, 136);
+  }
+  &__subtitle {
+    max-width: 500px;
+  }
+  &__span {
+    display: block;
+  }
+}
+
+
+.btn {
+  height: 45px;
+  color: $white;
+  background-color: $blue-light;
+  padding: 10px 30px;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+  border-radius: 4px;
+
+  &:hover, &:active {
+    background-color: $blue-dark;
+    color: white;
+  }
+}
