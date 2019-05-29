@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
 import * as list from './sidenavlist.module.scss'
-import { H2, H3, H4 } from '../Typography'
+import { H2, H3 } from '../Typography'
 
 
 class SubNavList extends React.Component {
@@ -17,10 +16,8 @@ class SubNavList extends React.Component {
 
   componentDidMount() {
     const { initialSelection, items } = this.props;
-    console.log(items)
 
     const selected = items.indexOf(initialSelection) !== -1 ? initialSelection : items[0];
-    console.log(selected)
     this.setState({
       selected
     });
@@ -32,7 +29,7 @@ class SubNavList extends React.Component {
 
     const formattedItems = items.map(item => {
       return (
-        <div onClick={e => this.setState({ selected: item })}>
+        <div onClick={e => this.setState({ selected: item })} key={item}>
           <H3 className={classnames(list.item, {[list.item__active]: item === selected})} text={item}/>
         </div>
       );

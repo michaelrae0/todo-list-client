@@ -1,11 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
 import * as search from './search.module.scss'
-import Container from '../../components/Container'
-import Row from '../../components/Row'
-import { H2, H3 } from '../../components/Typography'
 import { ReactComponent as SearchSVG } from '../../images/search-icon-black.svg'
 
 class Search extends React.Component {
