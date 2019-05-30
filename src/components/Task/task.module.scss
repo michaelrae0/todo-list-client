@@ -4,8 +4,6 @@
 $toggle-diam: 22px;
 
 .wrapper {
-  transition: all 1s;
-
   &__slideOut {
     animation: fade_out_bck 0.5s ease-in-out forwards;
   }
@@ -21,6 +19,7 @@ $toggle-diam: 22px;
   height: 50px;
   width: 100%;
   padding-left: 1.77rem;
+  background-color: $white;
 
   &:hover {
     cursor: pointer;

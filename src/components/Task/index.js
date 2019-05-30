@@ -1,7 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
+import { Draggable } from 'react-beautiful-dnd'
 
-import * as task from './task.module.scss'
+import * as taskStyles from './task.module.scss'
 import Row from '../Row'
 import { ReactComponent as CheckMarkSVG } from '../../images/checkmark-black.svg'
 
@@ -11,7 +12,7 @@ class Task extends React.Component {
     super(props);
 
     this.state = {
-      value: this.props.task.name,
+      value: this.props.task.content,
       slideOut: false,
     }
   }
@@ -25,25 +26,39 @@ class Task extends React.Component {
   }
 
   render () {
-    const { bordered, slideUp, fadeBorder } = this.props
+    const { task, index, bordered, slideUp, fadeBorder } = this.props
     const { value, slideOut } = this.state
 
     // wrapper handles opacity transform separately from row's translateX
     return (
-      <div className={classnames(task.wrapper, {[task.wrapper__slideOut]: slideOut}, {[task.wrapper__slideUp]: slideUp})}>
-        <Row className={classnames(task.row, {[task.row__slideOut]: slideOut})} noMargin>
-          <div className={task.status} onClick={this.handleCheck} >
-            <CheckMarkSVG className={task.status__checkmark}/>
+      <Draggable draggableId={task.id} index={index}>
+        {(provided) => (
+
+          <div 
+            {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}
+            className={classnames(
+              taskStyles.wrapper, 
+              {[taskStyles.wrapper__slideOut]: slideOut}, 
+              {[taskStyles.wrapper__slideUp]: slideUp}
+            )}>
+
+            <Row className={classnames(taskStyles.row, {[taskStyles.row__slideOut]: slideOut})} noMargin>
+              <div className={taskStyles.status} onClick={this.handleCheck} >
+                <CheckMarkSVG className={taskStyles.status__checkmark}/>
+              </div>
+              <input 
+                type='text' placeholder='Enter a Task'
+                className={taskStyles.input}
+                value={value}
+                onChange={e => this.setState({ value: e.target.value })}
+              />
+            </Row>
+            {bordered && <div className={classnames(taskStyles.border, {[taskStyles.border__fadeOut]: fadeBorder})}/>}
+
           </div>
-          <input 
-            type='text' placeholder='Enter a Task'
-            className={task.input}
-            value={value}
-            onChange={e => this.setState({ value: e.target.value })}
-          />
-        </Row>
-        {bordered && <div className={classnames(task.border, {[task.border__fadeOut]: fadeBorder})}/>}
-      </div>
+
+        )}
+      </Draggable>
     )
   }
 }
