@@ -2,6 +2,7 @@
 @import '../../styles/definitions/keyframes';
 
 $toggle-diam: 22px;
+$dimple-diam: 5px;
 
 .wrapper {
   transition: box-shadow 0.5s ease-in-out;
@@ -24,7 +25,6 @@ $toggle-diam: 22px;
   align-items: center;
   height: 50px;
   width: 100%;
-  padding-left: 1.77rem;
   background-color: $white;
 
   &:hover {
@@ -37,6 +37,48 @@ $toggle-diam: 22px;
 
   &__slideOut {
     animation: slide_out_right 1s ease-in-out both;
+  }
+}
+
+.handle {
+  position: relative;
+  width: calc(1.5rem + 14px);
+  height: 40px;
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+
+  &__dimple {
+    position: absolute;
+    height: $dimple-diam;
+    width: $dimple-diam;
+    border-radius: $dimple-diam / 2;
+
+    background-color: $gray-lighter;
+    transition: background-color 0.20s ease-in-out;
+
+    &:nth-of-type(2n-1) { // odd
+      left: 0.75rem;
+    }
+    &:nth-of-type(2n) { // even
+      right: 0.75rem;
+    }
+    &:nth-of-type(1), &:nth-of-type(2) { // top
+      top: 9px;
+    }
+    &:nth-of-type(3), &:nth-of-type(4) { // middle
+      top: calc(50% - #{$dimple-diam / 2});
+    }
+    &:nth-of-type(5), &:nth-of-type(6) { // bottom
+      bottom: 9px;
+    }
+  }
+
+  &:hover {
+    .handle__dimple {
+      background-color: $gray-light;
+    }
   }
 }
 
