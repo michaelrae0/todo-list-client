@@ -4,12 +4,18 @@
 $toggle-diam: 22px;
 
 .wrapper {
+  transition: box-shadow 0.5s ease-in-out;
+
   &__slideOut {
     animation: fade_out_bck 0.5s ease-in-out forwards;
   }
 
   &__slideUp {
     animation: slide_in_bot 0.2s ease-in-out both;
+  }
+
+  &__isDragging {
+    box-shadow: 0 0 4px  $gray-lighter;
   }
 }
 

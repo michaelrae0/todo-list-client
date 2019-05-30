@@ -32,14 +32,15 @@ class Task extends React.Component {
     // wrapper handles opacity transform separately from row's translateX
     return (
       <Draggable draggableId={task.id} index={index}>
-        {(provided) => (
+        {(provided, snapshot) => (
 
           <div 
             {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}
             className={classnames(
               taskStyles.wrapper, 
               {[taskStyles.wrapper__slideOut]: slideOut}, 
-              {[taskStyles.wrapper__slideUp]: slideUp}
+              {[taskStyles.wrapper__slideUp]: slideUp},
+              {[taskStyles.wrapper__isDragging]: snapshot.isDragging},
             )}>
 
             <Row className={classnames(taskStyles.row, {[taskStyles.row__slideOut]: slideOut})} noMargin>
