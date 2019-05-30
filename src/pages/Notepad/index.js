@@ -13,7 +13,7 @@ class Notepad extends React.Component {
         <Container className={notepad.container}>
           <Row className={notepad.row}>
             <SideNav />
-            <TaskList />
+            <TaskList lists={this.props.lists}/>
           </Row>
         </Container>
       </section>
