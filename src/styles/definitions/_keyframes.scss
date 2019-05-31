@@ -308,7 +308,7 @@
 
 /**
  * ----------------------------------------
- * animation slide-out-right
+ * animation slide-in-bot
  * ----------------------------------------
  */
  @-webkit-keyframes slide_in_bot {
@@ -325,6 +325,33 @@
   0% {
     -webkit-transform: translateY(51px);
             transform: translateY(51px);
+
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+ */
+ @-webkit-keyframes slide_in_top {
+  0% {
+    -webkit-transform: translateY(-51px);
+            transform: translateY(-51px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes slide_in_top {
+  0% {
+    -webkit-transform: translateY(-51px);
+            transform: translateY(-51px);
 
   }
   100% {
