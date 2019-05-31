@@ -5,52 +5,49 @@ import * as listStyles from './tasklist.module.scss'
 import Row from '../Row'
 import { H2, H4 } from '../Typography'
 import Task from '../Task'
+import AddItem from '../AddItem'
 
 class TaskList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      deletedIndex: this.props.lists['datelist-1'].taskIds.length,
-      fadedIndex: this.props.lists['datelist-1'].taskIds.length
+      deletedIndex: 100000,
+      fadedIndex: 100000,
+      addItem: false,
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if(this.props.lists !== prevProps.lists) {
-      const lists = this.props.lists
-
-      this.setState({
-        lists
-      })
-    }
-  }
-
-  handleClick = (i) => {
+  handleComplete = (i) => {
     let { taskIds } = this.props.lists['datelist-1']
 
     taskIds.splice(i, 1)
-    this.setState({
-      lists: this.state.lists,
-      deletedIndex: i
-    })
-    setTimeout(() => this.setState({ deletedIndex: taskIds.length }), 200)
+    // temporarily determine which tasks to animate
+    this.setState({ deletedIndex: i })
+    setTimeout(() => this.setState({ deletedIndex: 1000000 }), 200) 
   }
 
   handleBorderFade = (i) => {
-    // If last task on list is completed, fade the border above it
-    const { taskIds } = this.state.lists['datelist-1']
+    const { taskIds } = this.props.lists['datelist-1']
+    if (i === taskIds.length - 1) this.setState({ fadedIndex: i - 1 }); // fade border above bottom task
+  }
 
-    if (i === taskIds.length - 1) {
-      this.setState({
-        fadedIndex: i - 1, // Above deleted task
-      })
+  toggleAdd = () => {
+    this.setState({ addItem: !this.state.addItem })
+  }
+
+  addTask = (content) => {
+    const task = {
+      listId: 'datelist-1',
+      content,
     }
+    
+    this.props.dispatch({ type: 'ADD_ITEM', task })
   }
 
   render () {
     const { lists } = this.props
-    const { deletedIndex, fadedIndex } = this.state
+    const { deletedIndex, fadedIndex, addItem } = this.state
     const list = lists['datelist-1']
 
     const tasks = list.taskIds.map(taskId => list.tasks[taskId])
@@ -58,8 +55,9 @@ class TaskList extends React.Component {
       return (
         <Task 
           task={task} index={index} key={task.id} 
-          slideUp={index >= deletedIndex} bordered={index !== tasks.length - 1} fadeBorder={index === fadedIndex}
-          handleClick={this.handleClick}
+          slideUp={index >= deletedIndex} 
+          bordered={(index !== tasks.length - 1) || (addItem)} fadeBorder={index === fadedIndex}
+          handleComplete={this.handleComplete}
           handleBorderFade={this.handleBorderFade} />
       )
     })
@@ -75,10 +73,17 @@ class TaskList extends React.Component {
           {provided => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
               {formattedTasks}
+              {addItem && <Task init slideDown index={tasks.length} toggleAdd={this.toggleAdd} addTask={this.addTask}/>}
               {provided.placeholder}
             </div>
           )}
-        </Droppable>
+        </Droppable> 
+
+        <AddItem 
+          toggleAdd={this.toggleAdd} 
+          index={tasks.length} 
+          slideDown={addItem} 
+          slideUp={tasks.length > deletedIndex} />
       </div>
     )
   }

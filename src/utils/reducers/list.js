@@ -1,4 +1,5 @@
-import initialState from '../../../data'
+import initialState from '../../data'
+import { randomId } from '../strings'
 
 function reorderList(state, result) {
   const { destination, source, draggableId } = result;
@@ -31,15 +32,35 @@ function reorderList(state, result) {
 
 const listReducer = (state = initialState.lists, action) => {
   switch (action.type) {
-    case 'SWAP_ITEMS':
+    case 'ADD_ITEM': {
+      const { content, listId } = action.task
+      const oldList = state[listId]
+
+      const taskId = `task-${randomId(10)}`
+      const newTask = {
+        id: taskId,
+        status: 'incomplete',
+        content,
+        notes: null,
+      }
+
+      const newTasks = { ...oldList.tasks, [taskId]: newTask }
+      const newTaskOrder = [ ...oldList.taskIds, taskId ]
+      const newList = { id: listId, tasks: newTasks, taskIds: newTaskOrder }
+      
+      const newState = { ...state, [listId]: newList, }
+
+      return newState
+    }
+
+
+    case 'SWAP_ITEMS': {
       const newList = reorderList(state, action.result)
       
       if (newList) {
-        return {
-          ...state,
-          [newList.id]: newList,
-        }
+        return { ...state, [newList.id]: newList, }
       } else return state
+    }
 
       
     default:

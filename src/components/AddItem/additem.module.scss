@@ -1,0 +1,23 @@
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/keyframes';
+
+.row {
+  height: 50px;
+  align-items: center;
+  padding-left: 5.5rem;
+
+  &__slideDown {
+    animation: slide_in_top 0.2s ease-in-out both;
+  }
+
+  &__slideUp {
+    animation: slide_in_bot 0.2s ease-in-out both;
+  }
+}
+
+.title {
+  &:hover {
+    color: $pink;
+    cursor: pointer;
+  }
+}
