@@ -33,7 +33,7 @@ class Task extends React.Component {
       let arr = Array(6).fill('')
       return (
         <div className={taskStyles.handle} {...provided.dragHandleProps}>
-          {arr.map(() => <div className={taskStyles.handle__dimple} />)}
+          {arr.map((elem, i) => <div className={taskStyles.handle__dimple} key={i} />)}
         </div>
       )
     }
