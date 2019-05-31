@@ -27,9 +27,10 @@ function reorderList(state, result) {
   return newList
 }
 
+
+
 const listReducer = (state = initialState.lists, action) => {
   switch (action.type) {
-
     case 'SWAP_ITEMS':
       const newList = reorderList(state, action.result)
       
@@ -40,6 +41,7 @@ const listReducer = (state = initialState.lists, action) => {
         }
       } else return state
 
+      
     default:
       return state;
   }
