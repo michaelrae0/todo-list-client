@@ -11,7 +11,6 @@ class TaskList extends React.Component {
     super(props);
 
     this.state = {
-      lists: this.props.lists,
       deletedIndex: this.props.lists['datelist-1'].taskIds.length,
       fadedIndex: this.props.lists['datelist-1'].taskIds.length
     }
@@ -20,8 +19,6 @@ class TaskList extends React.Component {
   componentDidUpdate(prevProps) {
     if(this.props.lists !== prevProps.lists) {
       const lists = this.props.lists
-      console.log('hit')
-      console.log(lists)
 
       this.setState({
         lists
@@ -30,7 +27,7 @@ class TaskList extends React.Component {
   }
 
   handleClick = (i) => {
-    let { taskIds } = this.state.lists['datelist-1']
+    let { taskIds } = this.props.lists['datelist-1']
 
     taskIds.splice(i, 1)
     this.setState({
@@ -52,11 +49,9 @@ class TaskList extends React.Component {
   }
 
   render () {
-    const { lists, deletedIndex, fadedIndex } = this.state
-    
+    const { lists } = this.props
+    const { deletedIndex, fadedIndex } = this.state
     const list = lists['datelist-1']
-    console.log('list render')
-    console.log(list)
 
     const tasks = list.taskIds.map(taskId => list.tasks[taskId])
     const formattedTasks = tasks.map((task, index) => {
@@ -78,15 +73,12 @@ class TaskList extends React.Component {
 
         <Droppable droppableId={list.id}>
           {provided => (
-
             <div ref={provided.innerRef} {...provided.droppableProps}>
-             {formattedTasks}
-             {provided.placeholder}
+              {formattedTasks}
+              {provided.placeholder}
             </div>
-
           )}
         </Droppable>
-
       </div>
     )
   }
